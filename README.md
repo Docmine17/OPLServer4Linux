@@ -1,4 +1,4 @@
-# OPLServer4Li
+# OPLServer4Linux
 
 Um Shellscript que gera um ambiente e roda o OPLSever no linux.
 
