@@ -53,15 +53,14 @@ cmdtest tar
   --title="OPLServer4Linux" \
   --radiolist="Activities" --column="" --column="" \
     1 "Install" \
-    2 "Start On Login" \
-    3 "Remove" \
+    2 "Enable Autostart" \
+    3 "Disable Autostart" \
+    4 "Remove" \
 )
 
 case "$activity" in
+
     "Install")
-    
-    echo "Installation its starting..."
-    echo "Baixando OPLServer"
     mkdir $tmp
     cd $tmp
     wget "https://github.com/elmariolo/OPL-Server/releases/download/v2.0/v2.0.2022-08-24.tar"
@@ -81,27 +80,28 @@ case "$activity" in
     		xdg-icon-resource forceupdate
     		zenity --info --text="OPLServer4Linux instalado com sucesso."
     		#WINEPREFIX=$prefix wine $serverdir/OPLServer.exe
-    		
     	else
     		zenity --info --text="Falha na extração do aquivo"
     	fi
+    	
     else
     	zenity --info --text="Falha no download do OPLServer"
-    	
     fi
-    
     ;;
     
-    "Start On Login")
-    
+    "Enable Autostart")
     rm $autostart/OPLServer4Linux.desktop
     mkdir $autostart
     echo -e $desktop >> $autostart/OPLServer4Linux.desktop
-    zenity --info --text="OPLServer4Linux adicionado ao Login."
+    zenity --info --text="OPLServer4Linux autostart enabled."
+    ;;
+    
+    "Disable Autostart")
+    rm $autostart/OPLServer4Linux.desktop
+    zenity --info --text="OPLServer4Linux autostart disabled."
     ;;
     
     "Remove")
-    echo "Remove"
     pkill OPLServer.exe
     rm -R $tmp
     rm -R $serverdir
