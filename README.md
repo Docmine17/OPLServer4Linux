@@ -2,7 +2,8 @@
 
 Um Shellscript que Baixa, Instala, Adiciona na inicialização e Desinstala o OPLServer no linux.
 
-![Captura de tela de 2022-08-29 20-44-50](https://user-images.githubusercontent.com/67164552/187317763-78c0b852-433f-4b12-a1cb-4a1eb6fbbb09.png)
+![image](https://user-images.githubusercontent.com/67164552/189238361-8dc722c1-5d96-4ed3-9a2f-ed83cd4ffe47.png)
+
 ![Captura de tela de 2022-08-29 21-06-18](https://user-images.githubusercontent.com/67164552/187319816-cee8cdb2-59cd-457c-8d89-eb4042704f59.png)
 
 
@@ -26,6 +27,9 @@ Recursos Planejados:
 - tar
 
 Não se preocupe, essas dependências você encontra no repositório de praticamente qualquer distro.
+
+![image](https://user-images.githubusercontent.com/67164552/189238566-ef2cfa00-7c18-4dae-98b2-4d833d794de5.png)
+
 
 ---
 Este projeto não está afiliado ao OPLServer nem ao OPL.
