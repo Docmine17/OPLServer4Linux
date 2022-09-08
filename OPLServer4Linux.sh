@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #                @%*+=:.                 
 #                @@@@@@@@*=.             
@@ -17,7 +17,7 @@
 #
 #	      OPLServer4Linux
 #
-
+zenity=false
 wine=false
 wget=false
 tar=false
@@ -38,18 +38,46 @@ cmdtest() {
 	cmdexist=$( command -v $1 )
 	if [ $cmdexist ]; then
 	   echo "$1 installed"
+      eval "$1=true"
 	else
 	   echo "$1 is not installed."
 	fi
 }
 
 #Verificar se as dependencias estão instaladas
-
+cmdtest zenity
 cmdtest wine
 cmdtest wget
 cmdtest tar
 
- activity=$(zenity --list \
+if [ $zenity = false ]; then
+	echo "zenity is not installed, please install it"
+    exit 127
+else
+	if [ $wine = false ]; then
+        msg=" ⛔ wine" 
+	fi
+
+    if [ $wget = false ]; then
+        msg="$msg\n ⛔ wget"
+    fi
+
+    if [ $tar = false ]; then
+        msg="$msg\n ⛔ tar"
+    fi
+
+    if [ -n "$msg" ]; then
+    zenity --error --text="The following components are missing:\n\n$msg" --width=300
+    exit 127
+    
+    fi
+
+fi
+
+
+#Open zenity menu
+ activity=$(zenity \
+  --list \
   --title="OPLServer4Linux" \
   --radiolist="Activities" --column="" --column="" \
     1 "Install" \
@@ -112,5 +140,7 @@ case "$activity" in
     ;;
     
 esac
+
+exit 0
 
 #echo fim
